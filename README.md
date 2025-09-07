@@ -136,7 +136,7 @@ Data access scripts and instructions are provided in the `datasets/` directory.
 ## Course Website
 
 Visit the course website for announcements, detailed schedule, and additional resources:
-[https://yourusername.github.io/brain-science-ai](https://neuralcoding-lab.github.io/BSAI/)
+[https://neuralcoding-lab.github.io/BSAI/](https://neuralcoding-lab.github.io/BSAI/)
 
 ## Contributing
 
