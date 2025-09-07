@@ -73,8 +73,8 @@ brain-science-ai/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/brain-science-ai.git
-   cd brain-science-ai
+   git clone https://github.com/NeuralCoding-Lab/BSAI.git
+   cd BSAI
    ```
 
 2. **Install required packages:**
