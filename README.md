@@ -46,7 +46,7 @@ brain-science-ai/
 
 | Week | Date | Topic | Tutorial |
 |------|------|-------|----------|
-| 1 | 09/18 | Introduction, Course Setup, Brain & AI Overview, Python Bootcamp | - |
+| 1 | 09/18 | Introduction, Course Setup, Brain & AI Overview | Python Bootcamp |
 | 2 | 09/25 | NeuroAI | Data Access with Python |
 | 3 | 09/28 (Sun) | Neural Coding 1: Foundation, Information Theory, Correlation | - |
 | 4 | 10/09 | Neural Coding 2: GLM, Latent Variable Models, Efficient Coding | GLM |
