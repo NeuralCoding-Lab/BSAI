@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Project - Brain Science and AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: #1e40af;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e40af;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            color: #374151;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-type {
+            background: #f8fafc;
+            border-left: 4px solid #1e40af;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .project-type h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .project-overview {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            border-left: 4px solid #f59e0b;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .project-overview h2 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .timeline-section {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        .timeline-section h3 {
+            color: #0369a1;
+            margin-bottom: 15px;
+        }
+
+        .evaluation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .evaluation-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid #10b981;
+        }
+
+        .evaluation-item h4 {
+            color: #065f46;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .data-resources {
+            background: #f0f4ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .data-resources h3 {
+            color: #3730a3;
+            margin-bottom: 15px;
+        }
+
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .resource-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #6366f1;
+            font-weight: 500;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .example-topics {
+            background: #fefce8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .example-topics h4 {
+            color: #854d0e;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #1e3a8a;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .evaluation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resource-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Final Project</h1>
+        <p>Brain Science and AI Course - Autumn 2025</p>
+    </header>
+
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="index.html#schedule" class="nav-item">Schedule</a>
+            <!-- <a href="#" class="nav-item">🎓 Lectures</a>
+            <a href="#" class="nav-item">📝 Assignments</a> -->
+            <a href="project.html" class="nav-item active">Project</a>
+            <a href="#" class="nav-item">Github</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Course Home</a>
+
+        <div class="content-section">
+            <div class="project-overview">
+                <h2>Project Overview</h2>
+                <p>The final project will consist of a small research project on a topic related to computational neuroscience and the application of AI to brain science. You will conduct either original data analysis/modeling work or provide an in-depth exposition of a related topic, evaluated based on final presentation.</p>
+            </div>
+
+            <h2 class="subsection-title">Project Structure</h2>
+            <ul>
+                <li><strong>Groups:</strong> 1-5 people</li>
+                <li><strong>Project presentation:</strong> Final weeks of class (time depends on total number of projects)</li>
+                <li><strong>Key principle:</strong> Keep your scope manageable - not too broad, not overly complicated!</li>
+            </ul>
+
+            <h2 class="section-title">Project Types</h2>
+
+            <div class="project-type">
+                <h3>Type A: Data Analysis and Modeling</h3>
+                <p><strong>Description:</strong> Choose a computational neuroscience or NeuroAI topic that are based on or extend our class material. Conduct original modeling work, simulations, or data analysis.</p>
+                
+                <div class="example-topics">
+                    <h4>Example Topics (based on course tutorials):</h4>
+                    <ul>
+                        <li>Build upon GLM, CNN, RNN, or network analysis tutorials with new applications</li>
+                        <li><strong>Neural coding extensions:</strong> Apply GLMs or encoding models to datasets (e.g., Allen Brain Observatory, IBL data, or other publicly available neural data)</li>
+                        <li><strong>Representation analysis:</strong> Use dimensionality reduction or representational similarity analysis on neural or artificial neural network data</li>
+                        <li><strong>NeuroAI comparisons:</strong> Compare representations between brain areas and artificial neural networks (e.g., using CNN or other models)</li>
+                        <li><strong>Dynamical systems modeling:</strong> Implement state-space models, HMMs, or RNN dynamics for neural data analysis</li>
+                        <li><strong>Brain network analysis:</strong> Apply graph theory methods to connectome data or functional connectivity</li>
+                        <li><strong>Generative modeling:</strong> Use generative models to understand neural population activity or sensory processing</li>
+                    </ul>
+                </div>
+
+                <h4>Suggested Approach:</h4>
+                <ol>
+                    <li>Start with tutorial provided in class or an open GitHub repo with analysis or modeling code</li>
+                    <li>Implement a core component of the model/analysis</li>
+                    <li>Apply it to relevant data or extend it in a novel direction</li>
+                    <li>Generate insights through systematic exploration of model behavior or data patterns</li>
+                </ol>
+            </div>
+
+            <div class="project-type">
+                <h3>Type B: Research Summary</h3>
+                <p><strong>Description:</strong> Provide an in-depth, didactic explanation of a computational neuroscience or NeuroAI topic that extends beyond our class coverage (no modeling is necessary).</p>
+                
+                <div class="example-topics">
+                    <h4>Example Topics:</h4>
+                    <ul>
+                        <li><strong>Advanced neural coding theories:</strong> Information bottleneck, predictive coding, or Bayesian brain hypotheses</li>
+                        <li><strong>Cutting-edge NeuroAI methods:</strong> Foundation models for neuroscience, neural latent models, or brain-inspired AI architectures</li>
+                        <li><strong>Theory deep dives:</strong> Efficient coding theory, criticality in neural networks, or continual learning in biological systems</li>
+                        <li><strong>Methodological expositions:</strong> Advanced dimensionality reduction techniques, causal inference in neuroscience, or modern experimental methods (optogenetics, calcium imaging analysis)</li>
+                        <li><strong>Cross-disciplinary connections:</strong> Quantum approaches to consciousness, information geometry in neural coding, or developmental neuroscience modeling</li>
+                        <li><strong>AI agent for neuroscience</strong></li>
+                    </ul>
+                </div>
+
+                <h4>Suggested Approach:</h4>
+                <ol>
+                    <li>Create explanatory diagrams where helpful</li>
+                    <li>Break down mathematical concepts step-by-step</li>
+                    <li>Provide intuitive explanations alongside formal descriptions</li>
+                    <li>Connect the topic to themes from our class</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="data-resources">
+                <h3>Data Resources</h3>
+                <p>You are encouraged to use real neural data for modeling projects:</p>
+                <div class="resource-list">
+                    <div class="resource-item">Allen Brain Observatory<br><small>Visual cortex recordings during behavioral tasks</small></div>
+                    <div class="resource-item">International Brain Laboratory (IBL)<br><small>Standardized decision-making task data across labs</small></div>
+                    <div class="resource-item">Primate Datasets<br><small>Available through various repositories (see Week 2 tutorial materials)</small></div>
+                    <div class="resource-item">Public Repositories<br><small>CRCNS, DANDI, or other open neuroscience datasets</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="content-section">
+            <h2 class="section-title">Evaluation Criteria</h2>
+            <p>Your project will be assessed on your presentation and slides:</p>
+            
+            <div class="evaluation-grid">
+                <div class="evaluation-item">
+                    <h4>Clarity of Communication</h4>
+                    <p>Quality and clarity of presentation delivery</p>
+                </div>
+                <div class="evaluation-item">
+                    <h4>Scope Management</h4>
+                    <p>Appropriate depth for the time constraints</p>
+                </div>
+                <div class="evaluation-item">
+                    <h4>Originality</h4>
+                    <p>Novel insights, applications, or perspectives (Type A) / pedagogical value (Type B)</p>
+                </div>
+                <div class="evaluation-item">
+                    <h4>Technical Rigor</h4>
+                    <p>Appropriate use of computational methods and mathematical understanding</p>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="content-section">
+            <div class="timeline-section">
+                <h3>Timeline and Milestones</h3>
+                <ul>
+                    <li><strong>Topic proposal due:</strong> Week 8 (11/6) - settle down team arrangement</li>
+                    <li><strong>Progress check-in:</strong> Week 11 (11/27) - progress check by TA</li>
+                    <li><strong>Final presentations:</strong> Weeks 14-15 (12/18 and 12/25)</li>
+                </ul>
+            </div>
+
+            <h2 class="subsection-title">Additional Notes</h2>
+            <ul>
+                <li>Start thinking about projects early - good computational neuroscience projects require time for both understanding and implementation</li>
+                <li>Remember that negative results or unexpected findings can be just as valuable as confirmatory results - focus on clear methodology and honest interpretation</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Your University • Brain Science and AI Course • Autumn 2025</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

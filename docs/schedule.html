@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Schedule - Brain Science and AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: #1e40af;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e40af;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .schedule-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .schedule-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .event-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .event-lecture {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .event-assignment {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .event-exam {
+            background: #fecaca;
+            color: #dc2626;
+        }
+
+        .event-project {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .resource-link {
+            display: block;
+            color: #1e40af;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border-left: 3px solid #1e40af;
+            background: #f8fafc;
+        }
+
+        .resource-link:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .back-link {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #1e3a8a;
+        }
+
+        .schedule-summary {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            border-left: 4px solid #f59e0b;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .schedule-summary h3 {
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .content-section {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .schedule-table {
+                font-size: 0.9rem;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Course Schedule</h1>
+        <p>Brain Science and AI Course - Autumn 2025</p>
+    </header>
+
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="schedule.html" class="nav-item active">Schedule</a>
+            <a href="project.html" class="nav-item">Project</a>
+            <a href="#materials" class="nav-item">Github</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Course Home</a>
+
+        <div class="content-section">
+            <div class="schedule-summary">
+                <h3>General</h3>
+                <p><strong>Duration:</strong> 15 weeks (September 18 - December 25, 2025) | <strong>Special Note:</strong> Week 3 meets on Sep 28th</p>
+            </div>
+
+            <h2 class="section-title">Weekly Schedule</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Materials</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 1</span></td>
+                        <td>09/18/2025<br><small>Wednesday</small></td>
+                        <td>Introduction, Course Setup, Brain & AI Overview, Python Bootcamp + Kickoff Reading Assignment</td>
+                        <td><a href="#" class="resource-link">Slides & Reading</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 2</span></td>
+                        <td>09/25/2025<br><small>Wednesday</small></td>
+                        <td>NeuroAI + Tutorial: Data Access with Python for Projects</td>
+                        <td><a href="#" class="resource-link">Tutorial Materials</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 3</span></td>
+                        <td>09/28/2025<br><small>Sunday AM</small></td>
+                        <td>Neural Coding 1: Foundation, Information Theory, Correlation, Variability</td>
+                        <td><a href="#" class="resource-link">Lecture Notes</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 4</span></td>
+                        <td>10/09/2025<br><small>Wednesday</small></td>
+                        <td>Neural Coding 2: Encoding Models (GLM, Latent Variable Models, Efficient Coding) + Tutorial: GLM</td>
+                        <td><a href="#" class="resource-link">Tutorial: GLM</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 5</span></td>
+                        <td>10/16/2025<br><small>Wednesday</small></td>
+                        <td>Neural Coding 3: Divisive Normalization, Encoding Models with DNN (transformer) + Tutorial: CNN</td>
+                        <td><a href="#" class="resource-link">Tutorial: CNN</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 6</span></td>
+                        <td>10/23/2025<br><small>Wednesday</small></td>
+                        <td>Representation 1: RDM, Dimensionality Reduction, Self-Supervised Learning + Tutorial: Dimensionality Reduction</td>
+                        <td><a href="#" class="resource-link">Tutorial Materials</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 7</span></td>
+                        <td>10/30/2025<br><small>Wednesday</small></td>
+                        <td>Representation 2: Theories, Manifold, Capacity, Neuroscience vs DNN Comparison</td>
+                        <td><a href="#" class="resource-link">Lecture Notes</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 8</span></td>
+                        <td>11/06/2025<br><small>Wednesday</small></td>
+                        <td>Generative Models and Applications in Neuroscience Research + Brain-Computer Interface (project team finalization)</td>
+                        <td><a href="#" class="resource-link">Materials</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 9</span></td>
+                        <td>11/13/2025<br><small>Wednesday</small></td>
+                        <td>Linear Dynamical System, State Space Models (HMM, Latent Dynamical Models) + Tutorial: HMM</td>
+                        <td><a href="#" class="resource-link">Tutorial: HMM</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 10</span></td>
+                        <td>11/20/2025<br><small>Wednesday</small></td>
+                        <td>RNN and Applications in Neuroscience + Tutorial: RNN</td>
+                        <td><a href="#" class="resource-link">Tutorial: RNN</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-lecture">Week 11</span></td>
+                        <td>11/27/2025<br><small>Wednesday</small></td>
+                        <td>Network Neuroscience + Tutorial: Network Analysis with NetworkX</td>
+                        <td><a href="#" class="resource-link">Tutorial: NetworkX</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-assignment">Week 12</span></td>
+                        <td>12/04/2025<br><small>Wednesday</small></td>
+                        <td>Invited Speaker: Learning</td>
+                        <td><a href="#" class="resource-link">Speaker Info</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-assignment">Week 13</span></td>
+                        <td>12/11/2025<br><small>Wednesday</small></td>
+                        <td>Invited Speaker: Bayesian Theory and its Applications in Neuroscience</td>
+                        <td><a href="#" class="resource-link">Speaker Info</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-project">Week 14</span></td>
+                        <td>12/18/2025<br><small>Wednesday</small></td>
+                        <td>Student led discussion</td>
+                        <td><a href="#" class="resource-link">Discussion topics</a></td>
+                    </tr>
+                    <tr>
+                        <td><span class="event-type event-project">Week 15</span></td>
+                        <td>12/25/2025<br><small>Wednesday</small></td>
+                        <td>Project Presentations (Last Class)</td>
+                        <td><a href="#" class="resource-link">Project Requirements</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Your University • Brain Science and AI Course • Autumn 2025</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

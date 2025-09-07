@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Science and AI - Autumn 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-banner {
+            max-width: 600px;
+            height: auto;
+            margin: 0 auto 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .course-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .navigation {
+            background: #1e40af;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e40af;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .sidebar .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-link {
+            display: block;
+            color: #1e40af;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border-left: 3px solid #1e40af;
+            background: #f8fafc;
+        }
+
+        .resource-link:hover {
+            background: #1e40af;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .instructor-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .instructor-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .instructor-info {
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        .instructor-info strong {
+            color: #1f2937;
+        }
+
+        .announcement {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .announcement-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .course-overview {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+
+        .course-overview h2 {
+            color: #0369a1;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0 auto 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                padding: 12px 20px;
+            }
+
+            .header-content {
+                padding: 20px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            
+            <img src="images/course_banner.jpg" alt="Brain Science and AI Course" class="course-banner">
+           
+            <p class="course-subtitle">Integrating computational neuroscience with artificial intelligence through theory and practice</p>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-item active">Home</a>
+            <a href="schedule.html" class="nav-item">Schedule</a>
+            <a href="project.html" class="nav-item">Project</a>
+            <a href="https://github.com/NeuralCoding-Lab/BSAI" class="nav-item">Github</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="announcement">
+            <div class="announcement-title">📢 Course Announcements</div>
+            <p>Welcome to Brain Science and AI! First class starts September 18th with course introduction and Python bootcamp. Kickoff reading assignment will be distributed after the first class.</p>
+        </div>
+
+        <div class="main-content">
+            <main>
+                <section id="about" class="content-section">
+                    <div class="course-overview">
+                        <h2>Course Overview</h2>
+                        <p><strong>Duration:</strong> 15 weeks (September 18 - December 25, 2025) | <strong>Time:</strong> Thursday morning | <strong>Format:</strong> Lectures with integrated programming tutorials and discussions</p>
+                    </div>
+                </section>
+
+                <section id="syllabus" class="content-section">
+                    <h2 class="section-title">Course Syllabus</h2>
+                    <p><strong>Course Description:</strong> This course explores the integration of brain science and AI through theory and hands-on practice. Students will learn how AI models help understand the brain and how neuroscience inspires AI algorithm development. Using visual information processing as a foundation, the course covers neural coding, information representation, computational neuroscience, and modern AI architectures including transformers and large language models.</p>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px; color: #374151;">Learning Objectives</h3>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>Master fundamental concepts in computational neuroscience and neural coding</li>
+                        <li>Apply AI models (CNNs, RNNs, transformers) to analyze brain data</li>
+                        <li>Understand how biological intelligence shapes AI development</li>
+                        <li>Build practical skills in neural data analysis and modeling</li>
+                    </ul>
+                </section>
+
+                <section id="resources" class="content-section">
+                    <h2 class="section-title">Course Resources</h2>
+                    <p>Access all course materials, references, and tools needed for the class:</p>
+                    
+                    <div class="resource-grid">
+                        <a href="schedule.html" class="resource-link">
+                            📅 Course Schedule
+                        </a>
+                        <a href="project.html" class="resource-link">
+                            🚀 Project Description
+                        </a>
+                        <a href="https://github.com/yourusername/brain-science-ai" class="resource-link">
+                            💻 GitHub Repository
+                        </a>
+                        <!-- <a href="https://github.com/yourusername/brain-science-ai/tree/main/tutorials" class="resource-link">
+                            📖 Tutorial Materials
+                        </a> -->
+                        <a href="#" class="resource-link">
+                            📊 Datasets
+                        </a>
+                        <!-- <a href="#" class="resource-link">
+                            💬 Discussion Forum
+                        </a> -->
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <div class="content-section">
+                    <h2 class="section-title">Instructor</h2>
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">PI</div>
+                        <div class="instructor-info">
+                            <strong>Dr. Xiaoxuan Jia</strong><br>
+                            Associate Professor<br>
+                            <!-- <strong>Email:</strong> your.email@university.edu<br>
+                            <strong>Office:</strong> Science Building 456<br>
+                            <strong>Office Hours:</strong> MW 2:00-4:00 PM -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2 class="section-title">Teaching Assistants</h2>
+                    <div class="instructor-card">
+                        <div class="instructor-avatar">TA</div>
+                        <div class="instructor-info">
+                            <strong>Renzimo Zhang</strong><br>
+                            PhD Student<br>
+                            <!-- <strong>Email:</strong> ta1@university.edu<br>
+                            <strong>Office Hours:</strong> TBD -->
+                        </div>
+                    </div>
+                    <!-- <div class="instructor-card" style="margin-top: 20px;">
+                        <div class="instructor-avatar">TA</div>
+                        <div class="instructor-info">
+                            <strong>[TA Name 2]</strong><br>
+                            PhD Student<br>
+                            <strong>Email:</strong> ta2@university.edu<br>
+                            <strong>Office Hours:</strong> TBD
+                        </div>
+                    </div> -->
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Tsinghua University • Brain Science and AI Course • Autumn 2025</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+                if (nav.getAttribute('href') === '#' + current) {
+                    nav.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

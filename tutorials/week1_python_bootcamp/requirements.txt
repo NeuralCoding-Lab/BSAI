@@ -1,0 +1,26 @@
+# Python Bootcamp BSAI Course - Requirements
+# Core scientific computing packages
+numpy>=1.24.0
+scipy>=1.10.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+
+# Image processing
+Pillow>=10.0.0
+
+# Jupyter environment
+jupyter>=1.0.0
+jupyterlab>=4.0.0
+notebook>=7.0.0
+ipywidgets>=8.0.0
+ipykernel>=6.0.0
+
+# Additional visualization
+seaborn>=0.12.0
+plotly>=5.15.0
+
+# Development tools
+pytest>=7.0.0
+black>=23.0.0
+flake8>=6.0.0
