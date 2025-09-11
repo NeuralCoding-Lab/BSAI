@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Concepts in Neuroscience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            min-height: 100vh;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .concept-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .concept-card.active {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .communication { background: linear-gradient(135deg, #fbbf24, #f97316); }
+        .emergence { background: linear-gradient(135deg, #a78bfa, #ec4899); }
+        .evolution { background: linear-gradient(135deg, #4ade80, #14b8a6); }
+        .gene-environment { background: linear-gradient(135deg, #60a5fa, #6366f1); }
+        .information-processing { background: linear-gradient(135deg, #22d3ee, #3b82f6); }
+        .nervous-system-functions { background: linear-gradient(135deg, #f87171, #ec4899); }
+        .plasticity { background: linear-gradient(135deg, #34d399, #10b981); }
+        .structure-function { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+
+        .concept-icon {
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            fill: currentColor;
+        }
+
+        .concept-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .concept-description {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .detail-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .detail-panel.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .detail-icon {
+            width: 3rem;
+            height: 3rem;
+            padding: 0.75rem;
+            border-radius: 1rem;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            fill: currentColor;
+        }
+
+        .detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+            .main-title {
+                font-size: 2rem;
+            }
+        }
+
+        .detail-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .detail-section p {
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .examples-list {
+            list-style: none;
+        }
+
+        .examples-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+        }
+
+        .examples-list li::before {
+            content: '';
+            width: 0.5rem;
+            height: 0.5rem;
+            background: linear-gradient(135deg, #60a5fa, #a855f7);
+            border-radius: 50%;
+            margin-right: 0.75rem;
+        }
+
+        .footer-info {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            color: #d1d5db;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .close-hint {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .close-hint p {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">Core Concepts in Neuroscience</h1>
+            <p class="subtitle">
+                The Society for Neuroscience identifies eight fundamental principles that organize our understanding 
+                of the nervous system. Explore these interconnected concepts that span from molecular to behavioral levels.
+            </p>
+        </div>
+
+        <!-- Concepts Grid -->
+        <div class="concepts-grid">
+            <div class="concept-card communication" onclick="toggleConcept('communication')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                </svg>
+                <h3 class="concept-title">Communication Modalities</h3>
+                <p class="concept-description">
+                    How the nervous system encodes and transmits information using various signaling methods, including electrical and chemical signals.
+                </p>
+            </div>
+
+            <div class="concept-card emergence" onclick="toggleConcept('emergence')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12,2 2,7 12,12 22,7 12,2"></polygon>
+                    <polyline points="2,17 12,22 22,17"></polyline>
+                    <polyline points="2,12 12,17 22,12"></polyline>
+                </svg>
+                <h3 class="concept-title">Emergence</h3>
+                <p class="concept-description">
+                    How complex behaviors and functions arise from the interactions of simpler components within the nervous system.
+                </p>
+            </div>
+
+            <div class="concept-card evolution" onclick="toggleConcept('evolution')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16,3 21,3 21,8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21,16 21,21 16,21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                </svg>
+                <h3 class="concept-title">Evolution</h3>
+                <p class="concept-description">
+                    How the nervous system and its functions have been shaped over time by evolutionary processes.
+                </p>
+            </div>
+
+            <div class="concept-card gene-environment" onclick="toggleConcept('gene-environment')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="6" y1="3" x2="6" y2="15"></line>
+                    <circle cx="18" cy="6" r="3"></circle>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <path d="m18 9 2.5-2.5L18 4"></path>
+                    <path d="m6.5 8.5 1.5 1.5-1.5 1.5"></path>
+                    <path d="M12 12l1.5 1.5L12 15"></path>
+                </svg>
+                <h3 class="concept-title">Gene–Environment Interactions</h3>
+                <p class="concept-description">
+                    How genetic factors and environmental influences interact to determine an organism's traits and behaviors.
+                </p>
+            </div>
+
+            <div class="concept-card information-processing" onclick="toggleConcept('information-processing')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+                <h3 class="concept-title">Information Processing</h3>
+                <p class="concept-description">
+                    How neural circuits and systems process sensory information, generate cognitive processes, and produce behavioral outputs.
+                </p>
+            </div>
+
+            <div class="concept-card nervous-system-functions" onclick="toggleConcept('nervous-system-functions')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                </svg>
+                <h3 class="concept-title">Nervous System Functions</h3>
+                <p class="concept-description">
+                    The broad range of functions carried out by the nervous system, including sensation, movement, learning, and memory.
+                </p>
+            </div>
+
+            <div class="concept-card plasticity" onclick="toggleConcept('plasticity')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
+                    <path d="M14.5 6A2.5 2.5 0 0 1 17 8.5c0 1.11-.35 2.13-.94 2.97a3 3 0 0 1 .34 5.58 2.5 2.5 0 0 1-2.96 3.08A2.5 2.5 0 0 1 9.5 22v-7.5A2.5 2.5 0 0 1 12 12a2.5 2.5 0 0 1 2.5-2.5c0-.28-.22-2.5-2.5-2.5s-2.5.22-2.5 2.5"></path>
+                </svg>
+                <h3 class="concept-title">Plasticity</h3>
+                <p class="concept-description">
+                    The ability of the nervous system to change and adapt its structure and function in response to experience and environmental challenges.
+                </p>
+            </div>
+
+            <div class="concept-card structure-function" onclick="toggleConcept('structure-function')">
+                <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="m10 13 5 5-5 5-5-5 5-5z"></path>
+                    <path d="m10 3 5 5-5 5-5-5 5-5z"></path>
+                    <path d="m20 13 5 5-5 5-5-5 5-5z"></path>
+                    <path d="M6 9l2 2"></path>
+                    <path d="M14 15l2 2"></path>
+                    <path d="M14 9l2-2"></path>
+                    <path d="M6 15l2-2"></path>
+                </svg>
+                <h3 class="concept-title">Structure–Function</h3>
+                <p class="concept-description">
+                    The fundamental relationship between the physical organization (structure) of the nervous system and the functions it performs.
+                </p>
+            </div>
+        </div>
+
+        <!-- Detail Panels -->
+        <div id="communication-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon communication">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Communication Modalities</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Neural communication involves action potentials, synaptic transmission, neurotransmitters, and various signaling cascades that allow information to flow through neural networks.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Action potentials</li>
+                        <li>Synaptic transmission</li>
+                        <li>Neurotransmitter release</li>
+                        <li>Gap junctions</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="emergence-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon emergence">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12,2 2,7 12,12 22,7 12,2"></polygon>
+                        <polyline points="2,17 12,22 22,17"></polyline>
+                        <polyline points="2,12 12,17 22,12"></polyline>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Emergence</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Complex cognitive abilities and behaviors emerge from the collective activity of many neurons and neural circuits working together.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Consciousness from neural activity</li>
+                        <li>Memory from synaptic connections</li>
+                        <li>Decision-making from circuit dynamics</li>
+                        <li>Language from distributed networks</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="evolution-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon evolution">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16,3 21,3 21,8"></polyline>
+                        <line x1="4" y1="20" x2="21" y2="3"></line>
+                        <polyline points="21,16 21,21 16,21"></polyline>
+                        <line x1="15" y1="15" x2="21" y2="21"></line>
+                        <line x1="4" y1="4" x2="9" y2="9"></line>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Evolution</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Neural structures and functions have evolved to enhance survival and reproduction, leading to diverse nervous system organizations across species.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Brain size evolution</li>
+                        <li>Sensory system specialization</li>
+                        <li>Motor control refinement</li>
+                        <li>Social behavior circuits</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="gene-environment-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon gene-environment">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="6" y1="3" x2="6" y2="15"></line>
+                        <circle cx="18" cy="6" r="3"></circle>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <path d="m18 9 2.5-2.5L18 4"></path>
+                        <path d="m6.5 8.5 1.5 1.5-1.5 1.5"></path>
+                        <path d="M12 12l1.5 1.5L12 15"></path>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Gene–Environment Interactions</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Neural development and function result from dynamic interactions between genetic programming and environmental experiences.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Critical periods</li>
+                        <li>Epigenetic modifications</li>
+                        <li>Environmental enrichment</li>
+                        <li>Stress effects on development</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="information-processing-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon information-processing">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Information Processing</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>The nervous system transforms sensory inputs into meaningful perceptions and appropriate behavioral responses through complex computational processes.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Sensory encoding</li>
+                        <li>Feature detection</li>
+                        <li>Pattern recognition</li>
+                        <li>Decision algorithms</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="nervous-system-functions-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon nervous-system-functions">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Nervous System Functions</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>The nervous system coordinates diverse functions essential for survival, from basic reflexes to complex cognitive abilities.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Sensory perception</li>
+                        <li>Motor control</li>
+                        <li>Learning and memory</li>
+                        <li>Emotional regulation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="plasticity-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon plasticity">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
+                        <path d="M14.5 6A2.5 2.5 0 0 1 17 8.5c0 1.11-.35 2.13-.94 2.97a3 3 0 0 1 .34 5.58 2.5 2.5 0 0 1-2.96 3.08A2.5 2.5 0 0 1 9.5 22v-7.5A2.5 2.5 0 0 1 12 12a2.5 2.5 0 0 1 2.5-2.5c0-.28-.22-2.5-2.5-2.5s-2.5.22-2.5 2.5"></path>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Plasticity</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Neural plasticity allows the brain to reorganize, form new connections, and adapt throughout life in response to learning and experience.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Synaptic plasticity</li>
+                        <li>Structural changes</li>
+                        <li>Functional reorganization</li>
+                        <li>Recovery after injury</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <div id="structure-function-detail" class="detail-panel">
+            <div class="detail-header">
+                <div class="detail-icon structure-function">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m10 13 5 5-5 5-5-5 5-5z"></path>
+                        <path d="m10 3 5 5-5 5-5-5 5-5z"></path>
+                        <path d="m20 13 5 5-5 5-5-5 5-5z"></path>
+                        <path d="M6 9l2 2"></path>
+                        <path d="M14 15l2 2"></path>
+                        <path d="M14 9l2-2"></path>
+                        <path d="M6 15l2-2"></path>
+                    </svg>
+                </div>
+                <h2 class="detail-title">Structure–Function</h2>
+            </div>
+            <div class="detail-content">
+                <div class="detail-section">
+                    <h3>Detailed Description</h3>
+                    <p>Neural anatomy directly relates to function - the organization of cells, circuits, and brain regions determines their computational capabilities.</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Key Examples</h3>
+                    <ul class="examples-list">
+                        <li>Cortical organization</li>
+                        <li>Circuit architecture</li>
+                        <li>Cellular morphology</li>
+                        <li>Network topology</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="close-hint">
+                <p>Click on another concept above to explore more, or click this concept again to close this view.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-info">
+            <h3>Understanding Neuroscience Through Core Concepts</h3>
+            <p>
+                These eight concepts provide a framework for understanding how the nervous system works across 
+                all levels of analysis. They help organize neuroscience education and research by highlighting 
+                the fundamental principles that govern neural structure and function, from molecules to behavior.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let currentConcept = null;
+
+        function toggleConcept(conceptId) {
+            // Hide all detail panels
+            const allPanels = document.querySelectorAll('.detail-panel');
+            allPanels.forEach(panel => {
+                panel.classList.remove('active');
+            });
+
+            // Remove active state from all cards
+            const allCards = document.querySelectorAll('.concept-card');
+            allCards.forEach(card => {
+                card.classList.remove('active');
+            });
+
+            // If clicking the same concept, just close it
+            if (currentConcept === conceptId) {
+                currentConcept = null;
+                return;
+            }
+
+            // Show the selected concept
+            currentConcept = conceptId;
+            const panel = document.getElementById(conceptId + '-detail');
+            const card = document.querySelector('.' + conceptId);
+            
+            if (panel && card) {
+                panel.classList.add('active');
+                card.classList.add('active');
+                
+                // Smooth scroll to the detail panel
+                setTimeout(() => {
+                    panel.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>
