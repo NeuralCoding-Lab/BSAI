@@ -48,14 +48,14 @@ brain-science-ai/
 |------|------|-------|----------|
 | 1 | 09/18 | Introduction, Course Setup, Brain & AI Overview | Python Bootcamp |
 | 2 | 09/25 | NeuroAI | Data Access with Python |
-| 3 | 09/28 (Sun) | Neural Coding 1: Foundation, Information Theory, Correlation | - |
-| 4 | 10/09 | Neural Coding 2: GLM, Latent Variable Models, Efficient Coding | GLM |
-| 5 | 10/16 | Neural Coding 3: Divisive Normalization, DNN Encoding Models | CNN |
+| 3 | 09/28 (Sun) | Neural Coding 1: Foundation; Information Theory; Efficient Coding | - |
+| 4 | 10/09 | Neural Coding 2: Encoding models: GLM; DNN; Latent Variable Models | GLM |
+| 5 | 10/16 | Neural Coding 3: Gain modulation (state); Divisive Normalization; Variability | CNN |
 | 6 | 10/23 | Representation 1: RDM, Dimensionality Reduction, Self-Supervised Learning | Dimensionality Reduction |
 | 7 | 10/30 | Representation 2: Theories, Manifolds, Capacity, DNN Comparisons | - |
 | 8 | 11/06 | Generative Models, BCI (Project Team Finalization) | - |
 | 9 | 11/13 | Linear Dynamical Systems, State Space Models | HMM |
-| 10 | 11/20 | RNN Applications in Neuroscience | RNN |
+| 10 | 11/20 | Applications of RNN in Neuroscience | RNN |
 | 11 | 11/27 | Network Neuroscience | NetworkX Analysis |
 | 12 | 12/04 | Invited Speaker: Learning | - |
 | 13 | 12/11 | Invited Speaker: Bayesian Theory in Neuroscience | - |
