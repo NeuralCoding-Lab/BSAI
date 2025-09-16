@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Concepts in Neuroscience</title>
+    <title>Core Concepts in Neuroscience - Brain Science and AI</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,40 @@
             min-height: 100vh;
             color: white;
             line-height: 1.6;
+        }
+
+        /* Navigation styles matching other pages */
+        .navigation {
+            background: #1e40af;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #60a5fa;
         }
 
         .container {
@@ -168,6 +202,14 @@
             .main-title {
                 font-size: 2rem;
             }
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                padding: 12px 20px;
+            }
         }
 
         .detail-section h3 {
@@ -237,9 +279,32 @@
             color: #9ca3af;
             font-style: italic;
         }
+
+        /* Footer copyright */
+        .footer {
+            background: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(10px);
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="schedule.html" class="nav-item">Schedule</a>
+            <a href="project.html" class="nav-item">Project</a>
+            <a href="neuroscience_core_sfn.html" class="nav-item active">Core</a>
+            <a href="ethics_page.html" class="nav-item">Ethics</a>
+            <a href="https://github.com/NeuralCoding-Lab/BSAI" class="nav-item">Github</a>
+        </div>
+    </nav>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -297,7 +362,7 @@
                     <path d="m6.5 8.5 1.5 1.5-1.5 1.5"></path>
                     <path d="M12 12l1.5 1.5L12 15"></path>
                 </svg>
-                <h3 class="concept-title">Gene–Environment Interactions</h3>
+                <h3 class="concept-title">Gene—Environment Interactions</h3>
                 <p class="concept-description">
                     How genetic factors and environmental influences interact to determine an organism's traits and behaviors.
                 </p>
@@ -353,7 +418,7 @@
                     <path d="M14 9l2-2"></path>
                     <path d="M6 15l2-2"></path>
                 </svg>
-                <h3 class="concept-title">Structure–Function</h3>
+                <h3 class="concept-title">Structure—Function</h3>
                 <p class="concept-description">
                     The fundamental relationship between the physical organization (structure) of the nervous system and the functions it performs.
                 </p>
@@ -466,7 +531,7 @@
                         <path d="M12 12l1.5 1.5L12 15"></path>
                     </svg>
                 </div>
-                <h2 class="detail-title">Gene–Environment Interactions</h2>
+                <h2 class="detail-title">Gene—Environment Interactions</h2>
             </div>
             <div class="detail-content">
                 <div class="detail-section">
@@ -598,7 +663,7 @@
                         <path d="M6 15l2-2"></path>
                     </svg>
                 </div>
-                <h2 class="detail-title">Structure–Function</h2>
+                <h2 class="detail-title">Structure—Function</h2>
             </div>
             <div class="detail-content">
                 <div class="detail-section">
@@ -630,6 +695,11 @@
             </p>
         </div>
     </div>
+
+    <!-- Copyright Footer -->
+    <footer class="footer">
+        <p>© 2025 Tsinghua University • Brain Science and AI Course • Autumn 2025</p>
+    </footer>
 
     <script>
         let currentConcept = null;
@@ -671,6 +741,18 @@
                 }, 100);
             }
         }
+
+        // Update active nav item
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href.startsWith('#') && !href.startsWith('http')) {
+                    // Update active nav item for internal pages
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>

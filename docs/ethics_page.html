@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Ethics - Brain Science and AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .navigation {
+            background: #1e40af;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom-color: #60a5fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e40af;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+
+        .ethics-overview {
+            background: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 30px;
+        }
+
+        .ethics-overview h2 {
+            color: #0369a1;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .ethics-category {
+            margin-bottom: 35px;
+        }
+
+        .ethics-category h3 {
+            color: #1f2937;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            font-size: 1.2rem;
+        }
+
+        .ethics-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ethics-list li {
+            background: #f8fafc;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-left: 4px solid #1e40af;
+            border-radius: 0 6px 6px 0;
+            transition: all 0.3s ease;
+        }
+
+        .ethics-list li:hover {
+            background: #e2e8f0;
+            transform: translateX(5px);
+        }
+
+        .consequences-section {
+            background: linear-gradient(135deg, #fef3c7, #fed7aa);
+            border-left: 4px solid #f59e0b;
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .consequences-section h3 {
+            color: #92400e;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .consequence-level {
+            background: white;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .consequence-level h4 {
+            color: #92400e;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 1px solid #fca5a5;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning-box h4 {
+            color: #dc2626;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .warning-box p {
+            color: #7f1d1d;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            background: #ecfdf5;
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 30px;
+        }
+
+        .contact-info h3 {
+            color: #047857;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: #065f46;
+            line-height: 1.7;
+        }
+
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                padding: 12px 20px;
+            }
+
+            .header-content {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="page-title">Course Ethics & Academic Integrity</h1>
+            <p class="page-subtitle">Guidelines for professional conduct and academic excellence</p>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="schedule.html" class="nav-item">Schedule</a>
+            <a href="project.html" class="nav-item">Project</a>
+            <a href="neuroscience_core_sfn.html" class="nav-item">Core</a>
+            <a href="ethics_page.html" class="nav-item">Ethics</a>
+            <a href="https://github.com/NeuralCoding-Lab/BSAI" class="nav-item">Github</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="ethics-overview">
+            <h2>🎯 Our Commitment</h2>
+            <p>This course is built on principles of mutual respect, academic integrity, and collaborative learning. These ethics guidelines ensure a productive and professional learning environment that prepares you for success in research and industry.</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">📋 Course Ethics Guidelines</h2>
+            
+            <div class="ethics-category">
+                <h3><span class="category-icon">🎥</span>Class Conduct & Privacy</h3>
+                <ul class="ethics-list">
+                    <li><strong>No Recording Policy:</strong> Recording, photographing, or livestreaming any portion of class sessions is strictly prohibited without prior written consent from the instructor.</li>
+                    <li><strong>Respect Privacy:</strong> Protect the privacy and dignity of all class participants during discussions and presentations.</li>
+                    <li><strong>Professional Behavior:</strong> Maintain respectful and professional conduct during all class interactions.</li>
+                </ul>
+            </div>
+
+            <div class="ethics-category">
+                <h3><span class="category-icon">📚</span>Intellectual Property & Materials</h3>
+                <ul class="ethics-list">
+                    <li><strong>No Unauthorized Sharing:</strong> Course materials (including slides, handouts, recordings, and code) are for enrolled students only and may not be shared, distributed, or posted online without explicit permission.</li>
+                    <li><strong>Citation Required:</strong> When referencing course materials in your work, provide proper attribution to the course and instructor.</li>
+                    <li><strong>Respect Copyright:</strong> All course materials are protected by copyright and institutional policies.</li>
+                </ul>
+            </div>
+
+            <div class="ethics-category">
+                <h3><span class="category-icon">🤝</span>Academic Work & Collaboration</h3>
+                <ul class="ethics-list">
+                    <li><strong>Individual Effort:</strong> All individual assignments must reflect your own original work and effort. Plagiarism and unauthorized collaboration are prohibited.</li>
+                    <li><strong>Meaningful Group Participation:</strong> Group projects require active, meaningful contribution from each member. Free-riding undermines the learning experience for all team members.</li>
+                    <li><strong>Honest Communication:</strong> Communicate openly about challenges, workload distribution, and any issues that may affect your contribution to group work.</li>
+                    <li><strong>Proper Attribution:</strong> Give credit to all sources, collaborators, and AI tools used in your work.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="consequences-section">
+                <h3>⚖️ Consequences for Policy Violations</h3>
+                <p style="margin-bottom: 20px; color: #92400e;">The following progressive measures may be applied for ethics violations:</p>
+                
+                <div class="consequence-level">
+                    <h4>🟡 First Offense</h4>
+                    <p>Verbal warning and documentation in student file. Discussion of expectations and support resources.</p>
+                </div>
+
+                <div class="consequence-level">
+                    <h4>🟠 Repeated Violations</h4>
+                    <p>Written warning and required meeting with instructor to develop improvement plan. Possible grade reduction on affected assignments.</p>
+                </div>
+
+                <div class="consequence-level">
+                    <h4>🔴 Serious or Continued Violations</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Removal from group projects with grade penalty</li>
+                        <li>Reporting to Academic Affairs/Student Conduct office</li>
+                        <li>Course grade reduction or failure, depending on severity</li>
+                        <li>Formal disciplinary action through the university</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Special Note on Recording and Distribution</h4>
+                <p>Violations involving unauthorized recording or distribution of course materials may result in immediate removal from class and formal disciplinary action through the university, as these actions may violate both academic policies and privacy laws.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="contact-info">
+                <h3>💬 Questions or Concerns?</h3>
+                <p><strong>We're here to help!</strong> If you have questions about these policies, need clarification on what constitutes appropriate collaboration, or want to discuss any challenges you're facing, please reach out to the instructor or TA during office hours or via email.</p>
+                <p style="margin-top: 15px;"><strong>Remember:</strong> These guidelines exist to support your learning and ensure fairness for all students. When in doubt, ask for guidance rather than making assumptions.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Tsinghua University • Brain Science and AI Course • Autumn 2025</p>
+    </footer>
+
+    <script>
+        // Update active nav item
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href.startsWith('#') && !href.startsWith('http')) {
+                    // Update active nav item for internal pages
+                    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
