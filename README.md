@@ -28,7 +28,7 @@ brain-science-ai/
 │   ├── schedule.html              # Weekly schedule
 │   ├── project.html               # Project details
 │   └── images/
-├── lectures/                      # Lecture materials
+├── lectures/                      # Reading materials
 │   ├── week01/
 │   ├── week02/
 │   └── ...
@@ -49,15 +49,15 @@ brain-science-ai/
 | 1 | 09/18 | Introduction, Course Setup, Brain & AI Overview | Python Bootcamp |
 | 2 | 09/25 | NeuroAI | Data Access with Python |
 | 3 | 09/28 (Sun) | Neural Coding 1: Foundation; Information Theory; Efficient Coding | - |
-| 4 | 10/09 | Neural Coding 2: Encoding models: GLM; DNN; Latent Variable Models | GLM |
-| 5 | 10/16 | Neural Coding 3: Gain modulation (state); Divisive Normalization; Variability | CNN |
-| 6 | 10/23 | Representation 1: RDM, Dimensionality Reduction, Self-Supervised Learning | Dimensionality Reduction |
-| 7 | 10/30 | Representation 2: Theories, Manifolds, Capacity, DNN Comparisons | - |
+| 4 | 10/09 | Neural Coding 2: Encoding models: GLM | GLM |
+| 5 | 10/16 | Neural Coding 3: Latent Variable Models; DNN; Supervised vs self-supervised models | CNN |
+| 6 | 10/23 | Variability: Gain modulation (state); Divisive Normalization; Variability | Explainable variance |
+| 7 | 10/30 | Representation: Dimensionality Reduction; Manifolds; Capacity; RDM; Representation alignment | Dimensionality Reduction |
 | 8 | 11/06 | Generative Models, BCI (Project Team Finalization) | - |
 | 9 | 11/13 | Linear Dynamical Systems, State Space Models | HMM |
 | 10 | 11/20 | Applications of RNN in Neuroscience | RNN |
 | 11 | 11/27 | Network Neuroscience | NetworkX Analysis |
-| 12 | 12/04 | Invited Speaker: Learning | - |
+| 12 | 12/04 | Invited Speaker: Continual learning | - |
 | 13 | 12/11 | Invited Speaker: Bayesian Theory in Neuroscience | - |
 | 14 | 12/18 | Student-led Discussion | - |
 | 15 | 12/25 | Project Presentations | - |
@@ -170,7 +170,9 @@ Course materials are licensed under [Creative Commons Attribution-NonCommercial-
 
 This course builds upon resources and inspiration from:
 - python bootcamp from the 2016 Dynamic Brain Summer Course at Friday Harbor 
-- Cursor to update it to python 3
+- GLM tutorials from Neuromatch Academy
+- COSYNE tutorials
+- CORnet and Brain-score
 
 ---
 
