@@ -51,7 +51,7 @@ brain-science-ai/
 | 3 | 09/28 (Sun) | Neural Coding 1: Foundation; Information Theory; Efficient Coding | - |
 | 4 | 10/09 | Neural Coding 2: Encoding models: GLM | GLM |
 | 5 | 10/16 | Neural Coding 3: Latent Variable Models; DNN; Supervised vs self-supervised models | CNN |
-| 6 | 10/23 | Variability: Gain modulation (state); Divisive Normalization; Variability | Explainable variance |
+| 6 | 10/23 | Variability: Transformer; Foundation model; Divisive Normalization; Variability | Transformer |
 | 7 | 10/30 | Representation: Dimensionality Reduction; Manifolds; Capacity; RDM; Representation alignment | Dimensionality Reduction |
 | 8 | 11/06 | Generative Models, BCI (Project Team Finalization) | - |
 | 9 | 11/13 | Linear Dynamical Systems, State Space Models | HMM |
